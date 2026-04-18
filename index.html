@@ -17,7 +17,30 @@
     </style>
 </head>
 <body>
+<!-- COPY DARI SINI -->
+<marquee behavior="scroll" direction="left" style="background:#EE4D2D; color:white; padding:10px; font-weight:bold;">
+  🔥 PROMO! Bayar via QRIS a.n AZNABLOILER. Order Dada Ayam 1kg = Rp 38.000 🔥
+</marquee>
 
+<div onclick="bukaKeranjang()" style="position:fixed; top:60px; right:20px; background:#EE4D2D; color:white; padding:12px 16px; border-radius:50px; cursor:pointer; z-index:999;">
+  🛒 <span id="jumlahItem">0</span>
+</div>
+
+<div id="popupKeranjang" style="display:none; position:fixed; top:0; right:0; width:350px; height:100%; background:white; box-shadow:-5px 0 15px rgba(0,0,0,0.2); z-index:1000; overflow-y:auto;">
+  <div style="padding:20px; background:#333; color:white;">
+    <h2 style="margin:0; display:inline;">Keranjang</h2>
+    <span onclick="tutupKeranjang()" style="float:right; font-size:24px; cursor:pointer;">×</span>
+  </div>
+  <div id="isiKeranjang" style="padding:20px;"></div>
+  <div style="padding:20px; border-top:1px solid #eee;">
+    <h3>Total: Rp <span id="totalHarga">0</span></h3>
+    <button onclick="checkoutWA()" style="width:100%; background:#25D366; color:white; border:none; padding:15px; border-radius:8px; font-weight:bold;">
+      CHECKOUT VIA WA
+    </button>
+  </div>
+</div>
+<!-- SAMPE SINI -->
+<h1>AZNABLOILER - Supplier Ayam... <!-- ini h1 lu yg udah ada -->
     <h1>AZNABLOILER</h1>
     <p><strong>Supplier Ayam Broiler Segar & Berkualitas</strong><br>
     Jakarta, Indonesia<br>
@@ -26,37 +49,43 @@
     <img src="Ayam-karkas.jpeg" alt="Ayam Broiler Karkas Bersih AZNABLOILER" class="gambar-ayam">
 
     <div class="harga-box">
-        <h3>🔥 DAFTAR HARGA AZNABLOILER - APRIL 2026 🔥</h3>
-        <p>Karkas bersih seperti foto di atas. Langsung dari kandang.</p>
-    </div>
+        <h3>🔥 DAFTAR HARGA AZNABLOILER - APRIL 2026 🔥</h3><div class="harga-box">
+  <p>Dada Ayam Fillet 1kg: Rp 38.000</p>
+  <!-- TEMPEL TOMBOL INI DI BAWAHNYA -->
+  <button onclick="tambahKeranjang('Dada Ayam Fillet 1kg', 38000)" style="width:100%; background:#EE4D2D; color:white; border:none; padding:12px; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px;">
+    + Keranjang
+  </button>
+<table border="1" style="width:100%; border-collapse:collapse; text-align:center; margin-top:20px;">
+  <tr style="background:#FFC107;">
+    <th style="padding:12px;">Jenis Ayam</th>
+    <th style="padding:12px;">Bobot</th>
+    <th style="padding:12px;">Harga/Ekor</th>
+    <th style="padding:12px;">Aksi</th> <!-- 1. TAMBAH INI -->
+  </tr>
+  <!-- 2. TAMBAH BARIS PRODUK INI -->
+  <tr>
+    <td style="padding:12px;"><strong>Ayam Broiler Kecil</strong></td>
+    <td style="padding:12px;">0.8 - 1.0 kg</td>
+    <td style="padding:12px;"><strong>Rp45.000</strong></td>
+    <td style="padding:12px;">
+      <button onclick="tambahKeranjang('Ayam Broiler Kecil 0.8-1kg', 45000)" style="background:#EE4D2D; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; width:100%;">
+        + Keranjang
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:12px;"><strong>Ayam Broiler Sedang</strong></td>
+    <td style="padding:12px;">1.1 - 1.8 kg</td>
+    <td style="padding:12px;"><strong>Rp52.000</strong></td>
+    <td style="padding:12px;">
+      <button onclick="tambahKeranjang('Ayam Broiler Sedang 1.1-1.8kg', 52000)" style="background:#EE4D2D; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; width:100%;">
+        + Keranjang
+      </button>
+    </td>
+  </tr>
+       
 
-    <table>
-        <tr>
-            <th>Jenis Ayam</th>
-            <th>Bobot</th>
-            <th>Harga/Ekor</th>
-        </tr>
-        <tr>
-            <td><strong>Ayam Broiler Kecil</strong></td>
-            <td>0.8 - 1.0 kg</td>
-            <td><strong>Rp45.000</strong></td>
-        </tr>
-        <tr>
-            <td><strong>Ayam Broiler Sedang</strong></td>
-            <td>1.1 - 1.8 kg</td>
-            <td><strong>Rp65.000</strong></td>
-        </tr>
-        <tr>
-            <td><strong>Ayam Broiler Besar</strong></td>
-            <td>1.9 - 2.5 kg</td>
-            <td><strong>Rp75.000</strong></td>
-        </tr>
-        <tr>
-            <td><strong>Ayam Hidup</strong></td>
-            <td>Semua ukuran</td>
-            <td><strong>Mulai Rp40.000</strong></td>
-        </tr>
-    </table>
+
     
     <p class="note">*Harga dapat berubah. Bisa request potong 4, 8, 12. Harga grosir/langganan beda, chat WA aja.</p>
 
@@ -69,6 +98,38 @@
         <li><strong>Bobot Pasti:</strong> Tim timbang jujur. Bisa request bobot.</li>
         <li><strong>Harga Peternak:</strong> Langsung dari kandang sendiri.</li>
     </ul>
-
+<script>
+let keranjang = JSON.parse(localStorage.getItem('keranjangAZNA')) || [];
+function updateKeranjang() {
+  document.getElementById('jumlahItem').innerText = keranjang.length;
+  let isi = ''; let total = 0;
+  keranjang.forEach((item, index) => {
+    isi += `<div style="display:flex; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;"><div><strong>${item.nama}</strong><br><span style="color:#EE4D2D;">Rp ${item.harga.toLocaleString('id-ID')}</span></div><button onclick="hapusItem(${index})" style="background:red; color:white; border:none; border-radius:4px;">Hapus</button></div>`;
+    total += item.harga;
+  });
+  document.getElementById('isiKeranjang').innerHTML = isi || '<p>Keranjang kosong sultan 😭</p>';
+  document.getElementById('totalHarga').innerText = total.toLocaleString('id-ID');
+  localStorage.setItem('keranjangAZNA', JSON.stringify(keranjang));
+}
+function tambahKeranjang(nama, harga) {
+  keranjang.push({nama: nama, harga: harga});
+  updateKeranjang();
+  alert(`${nama} masuk keranjang!`);
+}
+function hapusItem(index) { keranjang.splice(index, 1); updateKeranjang(); }
+function bukaKeranjang() { document.getElementById('popupKeranjang').style.display = 'block'; updateKeranjang(); }
+function tutupKeranjang() { document.getElementById('popupKeranjang').style.display = 'none'; }
+function checkoutWA() {
+  if(keranjang.length === 0) { alert('Isi keranjang dulu!'); return; }
+  let pesan = 'Halo AZNABLOILER, saya mau order:%0A%0A'; let total = 0;
+  keranjang.forEach(item => {
+    pesan += `- ${item.nama} : Rp ${item.harga.toLocaleString('id-ID')}%0A`;
+    total += item.harga;
+  });
+  pesan += `%0ATotal: Rp ${total.toLocaleString('id-ID')}`;
+  window.open(`https://wa.me/6283892470223?text=${pesan}`, '_blank');
+}
+updateKeranjang();
+</script>
 </body>
 </html>
